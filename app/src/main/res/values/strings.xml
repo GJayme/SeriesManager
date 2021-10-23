@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SeriesManager</string>
+    <string name="nomeSerie">Nome</string>
+    <string name="anoLancamentoSerie">Ano de lançamento</string>
+    <string name="emissoraSerie">Emissora</string>
+    <string name="generoSerie">Genero</string>
+    <string name="numeroSequencialTemporada">Número sequencial</string>
+    <string name="anoLancamentoTemporada">Ano de lançamento</string>
+    <string name="nomeEpisodio">Nome Episódio</string>
+    <string name="vistoEpisodio">visto?</string>
+    <string name="numeroSequencialEpisodio">Número sequencial</string>
+    <string name="duracaoEpisodio">Duração</string>
 </resources>
