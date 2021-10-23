@@ -10,4 +10,7 @@
     <string name="vistoEpisodio">visto?</string>
     <string name="numeroSequencialEpisodio">Número sequencial</string>
     <string name="duracaoEpisodio">Duração</string>
+    <string name="removerSerie">Remover Série</string>
+    <string name="visualizarSerie">Visualizar Série</string>
+    <string name="btnVoltar">Voltar</string>
 </resources>
