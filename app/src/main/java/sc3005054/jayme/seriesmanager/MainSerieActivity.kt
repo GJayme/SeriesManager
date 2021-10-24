@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import sc3005054.jayme.seriesmanager.adapter.SerieRvAdapter
 import sc3005054.jayme.seriesmanager.controller.SerieController
-import sc3005054.jayme.seriesmanager.databinding.ActivityMainBinding
+import sc3005054.jayme.seriesmanager.databinding.ActivityMainSerieBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
 
-class MainActivity : AppCompatActivity(), OnSerieClickListener {
+class MainSerieActivity : AppCompatActivity(), OnSerieClickListener {
     companion object Extras {
         const val EXTRA_SERIE = "EXTRA_SERIE"
         const val EXTRA_SERIE_POSICAO = "EXTRA_SERIE_POSICAO"
     }
 
-    private val activityMainBinding: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
+    private val activityMainSerieBinding: ActivityMainSerieBinding by lazy {
+        ActivityMainSerieBinding.inflate(layoutInflater)
     }
 
     private lateinit var serieActivityResultLauncher: ActivityResultLauncher<Intent>
@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity(), OnSerieClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activityMainBinding.root)
+        setContentView(activityMainSerieBinding.root)
 
-        activityMainBinding.SeriesRv.adapter = serieAdapter
-        activityMainBinding.SeriesRv.layoutManager = serieLayoutManager
+        activityMainSerieBinding.SeriesRv.adapter = serieAdapter
+        activityMainSerieBinding.SeriesRv.layoutManager = serieLayoutManager
 
         serieActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultado ->
             if (resultado.resultCode == RESULT_OK) {
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), OnSerieClickListener {
             }
         }
 
-        activityMainBinding.adicionarSerieFb.setOnClickListener {
+        activityMainSerieBinding.adicionarSerieFb.setOnClickListener {
             serieActivityResultLauncher.launch(Intent(this, SerieActivity::class.java))
         }
     }
@@ -94,10 +94,10 @@ class MainActivity : AppCompatActivity(), OnSerieClickListener {
                         serieController.apagarSerie(serie.nome)
                         serieList.removeAt(posicao)
                         serieAdapter.notifyDataSetChanged()
-                        Snackbar.make(activityMainBinding.root, "Serie removida", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(activityMainSerieBinding.root, "Serie removida", Snackbar.LENGTH_SHORT).show()
                     }
                     setNegativeButton("Não") { _, _ ->
-                        Snackbar.make(activityMainBinding.root, "Remoção cancelada", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(activityMainSerieBinding.root, "Remoção cancelada", Snackbar.LENGTH_SHORT).show()
                     }
                     create()
                 }.show()
@@ -109,8 +109,8 @@ class MainActivity : AppCompatActivity(), OnSerieClickListener {
 
     override fun onSerieClick(posicao: Int) {
         val serie = serieList[posicao]
-        val consultarSeriesIntent = Intent(this, SerieActivity::class.java)
-        consultarSeriesIntent.putExtra(EXTRA_SERIE, serie)
-        startActivity(consultarSeriesIntent)
+        val consultarTemporadasIntent = Intent(this, MainTemporadaActivity::class.java)
+        consultarTemporadasIntent.putExtra(EXTRA_SERIE, serie)
+        startActivity(consultarTemporadasIntent)
     }
 }
