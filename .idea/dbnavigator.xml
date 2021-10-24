@@ -25,24 +25,25 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="37e7d0f9-d6bc-4023-83b6-7aae1df338c3">
-        <schema name="main" object-types="table, view" />
+      <connection connection-id="a11ca5d7-3bac-4f49-a13f-d0421a669ec8">
+        <schema name="main" object-types="table, view, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="37e7d0f9-d6bc-4023-83b6-7aae1df338c3">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+    <connection id="a11ca5d7-3bac-4f49-a13f-d0421a669ec8">
+      <console name="Connection 1" type="STANDARD" schema="main" session="Main"><![CDATA[select * from genero]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="37e7d0f9-d6bc-4023-83b6-7aae1df338c3" />
+    <connection id="a11ca5d7-3bac-4f49-a13f-d0421a669ec8" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="37e7d0f9-d6bc-4023-83b6-7aae1df338c3" dataset="main.serie" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a11ca5d7-3bac-4f49-a13f-d0421a669ec8" dataset="main.serie" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a11ca5d7-3bac-4f49-a13f-d0421a669ec8" dataset="main.temporada" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -70,9 +71,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="37e7d0f9-d6bc-4023-83b6-7aae1df338c3" active="true">
+      <connection id="a11ca5d7-3bac-4f49-a13f-d0421a669ec8" active="true">
         <database>
-          <name value="Connection" />
+          <name value="Connection 1" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />

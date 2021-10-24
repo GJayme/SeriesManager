@@ -21,7 +21,7 @@
         android:id="@+id/anoLancamentoTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/anoLancamentoSerie"
+        android:text="@string/anoLancamento"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/emissoraTv"
         app:layout_constraintTop_toBottomOf="@id/nomeTv"/>

@@ -40,7 +40,7 @@
         android:id="@+id/numeroSequencialEpisodioTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/numeroSequencialEpisodio"
+        android:text="@string/numeroSequencial"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/duracaoEpisodioTv"
         app:layout_constraintTop_toBottomOf="@id/nomeEpisodioTv"/>
