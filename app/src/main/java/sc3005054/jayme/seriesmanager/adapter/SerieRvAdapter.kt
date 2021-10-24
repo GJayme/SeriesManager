@@ -44,15 +44,15 @@ class SerieRvAdapter(
     }
 
     override fun onBindViewHolder(holder: SerieLayoutHolder, position: Int) {
-        // Buscar o livro
-        val livro = serieList[position]
+        // Buscar a serie
+        val serie = serieList[position]
 
         // Atualizar os valores do viewHolder
         with(holder) {
-            nomeTv.text = livro.nome
-            anoLancamentoTv.text = livro.anoLancamento
-            emissoraTv.text = livro.emissora
-            generoTv.text = livro.genero
+            nomeTv.text = serie.nome
+            anoLancamentoTv.text = serie.anoLancamento
+            emissoraTv.text = serie.emissora
+            generoTv.text = serie.genero
             itemView.setOnClickListener {
                 onSerieClickListener.onSerieClick(position)
             }

@@ -21,7 +21,7 @@ class DatabaseBuilder(contexto: Context) {
                 "nome TEXT NOT NULL PRIMARY KEY, " +
                 "ano_lancamento TEXT NOT NULL, " +
                 "emissora TEXT NOT NULL, " +
-                "genero INTEGER NOT NULL, " +
+                "genero TEXT NOT NULL, " +
                 "FOREIGN KEY(genero) REFERENCES genero(nome));"
 
         private val CRIAR_TABELA_TEMPORADA_STMT = "CREATE TABLE IF NOT EXISTS temporada (" +

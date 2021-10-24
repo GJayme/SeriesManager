@@ -19,7 +19,7 @@ class SerieSQLite(contexto: Context): SerieDAO {
 
     override fun recuperarSeries(): MutableList<Serie> {
         val series: MutableList<Serie> = ArrayList()
-        val serieCursor = bdSeries.rawQuery("SELECT * FROM serie", null);
+        val serieCursor = bdSeries.rawQuery("SELECT * FROM serie", null)
 
         if (serieCursor.moveToFirst()) {
             while (!serieCursor.isAfterLast) {
