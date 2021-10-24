@@ -1,7 +1,7 @@
 package sc3005054.jayme.seriesmanager.controller
 
 import sc3005054.jayme.seriesmanager.MainActivity
-import sc3005054.jayme.seriesmanager.domain.entities.Serie
+import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.repository.SerieDAO
 import sc3005054.jayme.seriesmanager.repository.SerieSQLite
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import sc3005054.jayme.seriesmanager.OnSerieClickListener
 import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.databinding.LayoutSerieBinding
-import sc3005054.jayme.seriesmanager.domain.entities.Serie
+import sc3005054.jayme.seriesmanager.domain.Serie
 
 class SerieRvAdapter(
     private val onSerieClickListener: OnSerieClickListener,

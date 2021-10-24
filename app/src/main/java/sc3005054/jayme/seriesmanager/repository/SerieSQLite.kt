@@ -3,7 +3,7 @@ package sc3005054.jayme.seriesmanager.repository
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import sc3005054.jayme.seriesmanager.domain.entities.Serie
+import sc3005054.jayme.seriesmanager.domain.Serie
 
 class SerieSQLite(contexto: Context): SerieDAO {
     private val bdSeries: SQLiteDatabase = DatabaseBuilder(contexto).getSeriesBD()

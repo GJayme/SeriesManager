@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import sc3005054.jayme.seriesmanager.adapter.SerieRvAdapter
 import sc3005054.jayme.seriesmanager.controller.SerieController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainBinding
-import sc3005054.jayme.seriesmanager.domain.entities.Serie
+import sc3005054.jayme.seriesmanager.domain.Serie
 
 class MainActivity : AppCompatActivity(), OnSerieClickListener {
     companion object Extras {

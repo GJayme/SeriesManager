@@ -2,7 +2,7 @@ package sc3005054.jayme.seriesmanager.repository
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import sc3005054.jayme.seriesmanager.domain.entities.Genero
+import sc3005054.jayme.seriesmanager.domain.Genero
 
 class GeneroSQLite(contexto: Context): GeneroDAO {
     private val bdSeries: SQLiteDatabase = DatabaseBuilder(contexto).getSeriesBD()

@@ -8,7 +8,7 @@ import sc3005054.jayme.seriesmanager.MainActivity.Extras.EXTRA_SERIE
 import sc3005054.jayme.seriesmanager.MainActivity.Extras.EXTRA_SERIE_POSICAO
 import sc3005054.jayme.seriesmanager.controller.GeneroController
 import sc3005054.jayme.seriesmanager.databinding.ActivitySerieBinding
-import sc3005054.jayme.seriesmanager.domain.entities.Serie
+import sc3005054.jayme.seriesmanager.domain.Serie
 
 class SerieActivity: AppCompatActivity() {
 
