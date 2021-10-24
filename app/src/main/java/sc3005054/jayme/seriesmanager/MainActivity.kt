@@ -57,6 +57,10 @@ class MainActivity : AppCompatActivity(), OnSerieClickListener {
                 }
             }
         }
+
+        activityMainBinding.adicionarSerieFb.setOnClickListener {
+            serieActivityResultLauncher.launch(Intent(this, SerieActivity::class.java))
+        }
     }
 
     override fun onSerieClick(posicao: Int) {
