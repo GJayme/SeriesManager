@@ -12,5 +12,6 @@
     <string name="duracaoEpisodio">Duração</string>
     <string name="removerSerie">Remover Série</string>
     <string name="visualizarSerie">Visualizar Série</string>
-    <string name="btnVoltar">Voltar</string>
+    <string name="btnVoltar">Salvar</string>
+    <string name="adicionarSerieFb">Adicionar série</string>
 </resources>

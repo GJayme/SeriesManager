@@ -11,15 +11,18 @@ class DatabaseBuilder(contexto: Context) {
         private val BD_SERIES_MANAGER = "series-managager"
 
         private val CRIAR_TABELA_GENERO_STMT = "CREATE TABLE IF NOT EXISTS genero (" +
-                "id INTEGER NOT NULL PRIMARY KEY, " +
-                "nome TEXT NOT NULL );"
+                "nome TEXT NOT NULL UNIQUE PRIMARY KEY);"
+
+        private val INSERT_ROMANCE_TABELA_GENERO_STMT = "INSERT INTO genero (nome) VALUES('Romance');"
+        private val INSERT_AVENTURA_TABELA_GENERO_STMT = "INSERT INTO genero (nome) VALUES('Aventura');"
+        private val INSERT_TERROR_TABELA_GENERO_STMT = "INSERT INTO genero (nome) VALUES('Terror');"
 
         private val CRIAR_TABELA_SERIE_STMT = "CREATE TABLE IF NOT EXISTS serie (" +
                 "nome TEXT NOT NULL PRIMARY KEY, " +
                 "ano_lancamento TEXT NOT NULL, " +
                 "emissora TEXT NOT NULL, " +
                 "genero INTEGER NOT NULL, " +
-                "FOREIGN KEY(genero) REFERENCES genero(id));"
+                "FOREIGN KEY(genero) REFERENCES genero(nome));"
 
         private val CRIAR_TABELA_TEMPORADA_STMT = "CREATE TABLE IF NOT EXISTS temporada (" +
                 "id INTEGER NOT NULL PRIMARY KEY, " +
@@ -45,6 +48,9 @@ class DatabaseBuilder(contexto: Context) {
     init {
         try {
             seriesBD.execSQL(CRIAR_TABELA_GENERO_STMT)
+            seriesBD.execSQL(INSERT_ROMANCE_TABELA_GENERO_STMT)
+            seriesBD.execSQL(INSERT_AVENTURA_TABELA_GENERO_STMT)
+            seriesBD.execSQL(INSERT_TERROR_TABELA_GENERO_STMT)
             seriesBD.execSQL(CRIAR_TABELA_SERIE_STMT)
             seriesBD.execSQL(CRIAR_TABELA_TEMPORADA_STMT)
             seriesBD.execSQL(CRIAR_TABELA_EPISODIO_STMT)

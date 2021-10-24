@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nomeTv"
-        android:enabled="false"/>
+        android:enabled="true"/>
 
     <TextView
         android:id="@+id/anoLancamentoTv"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/anoLancamentoTv"
-        android:enabled="false"/>
+        android:enabled="true"/>
 
     <TextView
         android:id="@+id/emissoraTv"
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emissoraTv"
-        android:enabled="false"/>
+        android:enabled="true"/>
 
     <TextView
         android:id="@+id/generoTv"
@@ -76,25 +76,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emissoraEt"/>
 
-    <EditText
-        android:id="@+id/generoEt"
+    <Spinner
+        android:id="@+id/generoSp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/generoTv"
-        android:enabled="false"/>
-
+        app:layout_constraintTop_toBottomOf="@id/generoTv"/>
 
     <Button
-        android:id="@+id/voltarBt"
+        android:id="@+id/salvarBt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btnVoltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/generoEt"/>
+        app:layout_constraintTop_toBottomOf="@id/generoSp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
