@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeriesManager">
         <activity
+            android:name=".TemporadaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainTemporadaActivity"
+            android:exported="true" />
+        <activity
             android:name=".SerieActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainSerieActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainSerieActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/SeriesRv"
+        android:id="@+id/TemporadasRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,14 +15,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/adicionarSerieFb"
+        android:id="@+id/adicionarTemporadaFb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_adicionar_serie"
-        android:contentDescription="@string/adicionarSerieFb"
+        android:contentDescription="Adicionar temporada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="VectorDrawableCompat" />
