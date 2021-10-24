@@ -1,14 +1,12 @@
 package sc3005054.jayme.seriesmanager
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
 import sc3005054.jayme.seriesmanager.MainActivity.Extras.EXTRA_SERIE
 import sc3005054.jayme.seriesmanager.MainActivity.Extras.EXTRA_SERIE_POSICAO
 import sc3005054.jayme.seriesmanager.controller.GeneroController
-import sc3005054.jayme.seriesmanager.controller.SerieController
 import sc3005054.jayme.seriesmanager.databinding.ActivitySerieBinding
 import sc3005054.jayme.seriesmanager.domain.entities.Serie
 
@@ -34,12 +32,20 @@ class SerieActivity: AppCompatActivity() {
         val spinnerAdapter: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, generos)
         activitySerieBinding.generoSp.adapter = spinnerAdapter
 
+        //Visualizar Série ou add um nova
         posicao = intent.getIntExtra(EXTRA_SERIE_POSICAO, -1)
         intent.getParcelableExtra<Serie>(EXTRA_SERIE)?.apply {
             activitySerieBinding.nomeEt.setText(this.nome)
             activitySerieBinding.anoLancamentoEt.setText(this.anoLancamento)
             activitySerieBinding.emissoraEt.setText(this.emissora)
-            activitySerieBinding.generoSp.selectedItem.toString()
+            activitySerieBinding.generoSp.setSelection(spinnerAdapter.getPosition(this.genero))
+            if (posicao != -1) {
+                activitySerieBinding.nomeEt.isEnabled = false
+                activitySerieBinding.anoLancamentoEt.isEnabled = false
+                activitySerieBinding.emissoraEt.isEnabled = false
+                activitySerieBinding.generoSp.isEnabled = false
+                activitySerieBinding.salvarBt.visibility = View.GONE
+            }
         }
 
         activitySerieBinding.salvarBt.setOnClickListener {

@@ -41,7 +41,7 @@ class SerieSQLite(contexto: Context): SerieDAO {
     }
 
     override fun removerSerie(nome: String): Int {
-        TODO("Not yet implemented")
+        return bdSeries.delete("serie", "nome = ?", arrayOf(nome))
     }
 
     private fun converterSerieParaContetValues(serie: Serie): ContentValues {
