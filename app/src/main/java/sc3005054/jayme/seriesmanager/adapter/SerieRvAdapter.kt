@@ -11,7 +11,7 @@ import sc3005054.jayme.seriesmanager.domain.Serie
 class SerieRvAdapter(
     private val onSerieClickListener: OnSerieClickListener,
     private val serieList: MutableList<Serie>
-): RecyclerView.Adapter<SerieRvAdapter.SerieLayoutHolder>(){
+): RecyclerView.Adapter<SerieRvAdapter.SerieLayoutHolder>() {
 
     var posicao: Int = -1
 
