@@ -11,7 +11,8 @@ class DatabaseBuilder(contexto: Context) {
         private val BD_SERIES_MANAGER = "series-managager"
 
         private val CRIAR_TABELA_GENERO_STMT = "CREATE TABLE IF NOT EXISTS genero (" +
-                "nome TEXT NOT NULL UNIQUE PRIMARY KEY);"
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "nome TEXT NOT NULL UNIQUE);"
 
         private val INSERT_ROMANCE_TABELA_GENERO_STMT = "INSERT INTO genero (nome) VALUES('Romance');"
         private val INSERT_AVENTURA_TABELA_GENERO_STMT = "INSERT INTO genero (nome) VALUES('Aventura');"

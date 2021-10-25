@@ -13,7 +13,7 @@ class GeneroSQLite(contexto: Context): GeneroDAO {
 
     override fun recuperarGeneros(): MutableList<String> {
         val generos: MutableList<String> = ArrayList()
-        val generoCursor = bdSeries.rawQuery("SELECT * FROM genero", null)
+        val generoCursor = bdSeries.rawQuery("SELECT nome FROM genero", null)
 
         if(generoCursor.moveToFirst()) {
             while (!generoCursor.isAfterLast) {
