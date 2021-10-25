@@ -10,6 +10,7 @@
     <string name="duracaoEpisodio">Duração</string>
     <string name="removerSerie">Remover Série</string>
     <string name="removerTemporada">Remover Temporada</string>
+    <string name="removerEpisodio">Remover Episódio</string>
     <string name="visualizarSerie">Visualizar Série</string>
     <string name="visualizarTemporada">Visualizar Temporada</string>
     <string name="btnVoltar">Salvar</string>
