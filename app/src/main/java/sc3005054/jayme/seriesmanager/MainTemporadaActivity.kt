@@ -88,7 +88,7 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
         val temporada = temporadaList[posicao]
 
         return when(item.itemId) {
-            R.id.visualizarSerieMi -> {
+            R.id.visualizarTemporadaMi -> {
                 val visualizarTemporadaIntent = Intent(this, TemporadaActivity::class.java)
                 visualizarTemporadaIntent.putExtra(EXTRA_TEMPORADA, temporada)
                 visualizarTemporadaIntent.putExtra(EXTRA_TEMPORADA_POSICAO, posicao)
@@ -96,7 +96,7 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
                 visualizarTemporadaActivityResultLauncher.launch(visualizarTemporadaIntent)
                 true
             }
-            R.id.removerSerieMi -> {
+            R.id.removerTemporadaMi -> {
                 with(AlertDialog.Builder(this)) {
                     setMessage("Confirmar remoção?")
                     setPositiveButton("Sim") { _, _ ->

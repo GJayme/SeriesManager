@@ -9,7 +9,9 @@
     <string name="vistoEpisodio">visto?</string>
     <string name="duracaoEpisodio">Duração</string>
     <string name="removerSerie">Remover Série</string>
+    <string name="removerTemporada">Remover Temporada</string>
     <string name="visualizarSerie">Visualizar Série</string>
+    <string name="visualizarTemporada">Visualizar Temporada</string>
     <string name="btnVoltar">Salvar</string>
     <string name="adicionarSerieFb">Adicionar série</string>
 </resources>

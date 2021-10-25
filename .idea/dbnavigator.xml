@@ -39,9 +39,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="d0f7fbee-d0df-449e-9aac-4d74756d8bfd" object-ref="schemas/main/tables/genero" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="d0f7fbee-d0df-449e-9aac-4d74756d8bfd" />
