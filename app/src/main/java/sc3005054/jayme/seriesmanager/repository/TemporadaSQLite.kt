@@ -15,7 +15,7 @@ class TemporadaSQLite(contexto: Context): TemporadaDAO {
 
     override fun recuperarTemporadas(nomeSerie: String): MutableList<Temporada> {
         val temporadas: MutableList<Temporada> = ArrayList()
-        val temporadaCursor = bdSeries.rawQuery("SELECT * FROM temporada WHERE nome_serie = ?;", arrayOf(nomeSerie))
+        val temporadaCursor = bdSeries.rawQuery("SELECT nome_serie, ano_lancamento, numero_sequencial FROM temporada WHERE nome_serie = ?;", arrayOf(nomeSerie))
 
         if (temporadaCursor.moveToFirst()) {
             while (!temporadaCursor.isAfterLast) {

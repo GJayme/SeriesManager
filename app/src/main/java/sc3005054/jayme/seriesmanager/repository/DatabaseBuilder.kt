@@ -26,17 +26,19 @@ class DatabaseBuilder(contexto: Context) {
                 "FOREIGN KEY(genero) REFERENCES genero(nome));"
 
         private val CRIAR_TABELA_TEMPORADA_STMT = "CREATE TABLE IF NOT EXISTS temporada (" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                 "numero_sequencial INTEGER NOT NULL, " +
                 "ano_lancamento TEXT NOT NULL, " +
                 "nome_serie TEXT NOT NULL, " +
                 "FOREIGN KEY(nome_serie) REFERENCES serie(nome));"
 
         private val CRIAR_TABELA_EPISODIO_STMT = "CREATE TABLE IF NOT EXISTS episodio (" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                 "numero_sequencial INTEGER NOT NULL, " +
                 "nome TEXT NOT NULL, " +
                 "duracao INTEGER NOT NULL, " +
                 "foi_visto INTEGER NOT NULL DEFAULT 0, " +
-                "temporada_id INTEGER NOT NULL" +
+                "temporada_id INTEGER NOT NULL, " +
                 "FOREIGN KEY(temporada_id) REFERENCES temporada(id));"
     }
 
