@@ -7,4 +7,5 @@ interface TemporadaDAO {
     fun recuperarTemporadas(nomeSerie: String): MutableList<Temporada>
     fun atualizarTemporada(temporada: Temporada): Int
     fun removerTemporada(nomeSerie: String, numeroSequencial: Int): Int
+    fun buscarTemporadaId(nomeSerie: String, numeroSequencial: Int): Int
 }
