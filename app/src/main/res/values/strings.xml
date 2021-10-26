@@ -15,4 +15,5 @@
     <string name="visualizarTemporada">Visualizar Temporada</string>
     <string name="btnVoltar">Salvar</string>
     <string name="adicionarSerieFb">Adicionar série</string>
+    <string name="addEpisodioFb">Adicionar Episósdio</string>
 </resources>
