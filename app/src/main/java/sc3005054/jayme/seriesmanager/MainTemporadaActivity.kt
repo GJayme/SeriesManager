@@ -20,6 +20,7 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
     companion object Extras {
         const val EXTRA_TEMPORADA = "EXTRA_TEMPORADA"
         const val EXTRA_TEMPORADA_POSICAO = "EXTRA_SERIE_POSICAO"
+        const val EXTRA_TEMPORADA_ID = "EXTRA_TEMPORADA_ID"
     }
 
     private lateinit var serie: Serie
@@ -118,8 +119,10 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
 
     override fun onTemporadaClick(posicao: Int) {
         val temporada = temporadaList[posicao]
-        val consultarTemporadasIntent = Intent(this, TemporadaActivity::class.java)
-        consultarTemporadasIntent.putExtra(EXTRA_TEMPORADA, temporada)
-        startActivity(consultarTemporadasIntent)
+        val temporadaId = temporadaController.buscarTemporadaId(temporada.nomeSerie, temporada.numeroSequencial)
+        val consultarEpisodiosIntent = Intent(this, MainEpisodioActivity::class.java)
+        consultarEpisodiosIntent.putExtra(EXTRA_TEMPORADA, temporada)
+        consultarEpisodiosIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
+        startActivity(consultarEpisodiosIntent)
     }
 }
