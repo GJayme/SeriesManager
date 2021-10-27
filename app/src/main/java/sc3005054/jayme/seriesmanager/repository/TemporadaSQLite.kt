@@ -31,10 +31,6 @@ class TemporadaSQLite(contexto: Context): TemporadaDAO {
         return temporadas
     }
 
-    override fun atualizarTemporada(temporada: Temporada): Int {
-        TODO("Not yet implemented")
-    }
-
     override fun removerTemporada(nomeSerie: String, numeroSequencial: Int): Int {
         val numeroSequencialString: String = numeroSequencial.toString()
         return bdSeries.delete("temporada", "numero_sequencial = ? AND nome_serie = ?",

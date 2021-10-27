@@ -33,8 +33,27 @@ class EpisodioSQLite(contexto: Context): EpisodioDAO {
         return episodios
     }
 
+    override fun recuperarEpisodio(numeroSequencial: Int, temporadaId: Int): Episodio? {
+        var episodio: Episodio? = null
+        val episodioCursor = bdSeries.rawQuery("SELECT * FROM episodio WHERE numero_sequencial = ? AND temporada_id = ?",
+            arrayOf(numeroSequencial.toString(), temporadaId.toString()))
+        if (episodioCursor.moveToFirst()) run {
+            episodio = Episodio(
+                episodioCursor.getInt(episodioCursor.getColumnIndexOrThrow("numero_sequencial")),
+                episodioCursor.getString(episodioCursor.getColumnIndexOrThrow("nome")),
+                episodioCursor.getInt(episodioCursor.getColumnIndexOrThrow("duracao")),
+                intToBoolean(episodioCursor.getInt(episodioCursor.getColumnIndexOrThrow("foi_visto"))),
+                episodioCursor.getInt(episodioCursor.getColumnIndexOrThrow("temporada_id"))
+            )
+        }
+        return episodio
+    }
+
+
     override fun atualizarEpisodio(episodio: Episodio): Int {
-        TODO("Not yet implemented")
+        val episodioCv: ContentValues = converterEpisodioParaContetValues(episodio)
+        return bdSeries.update("episodio", episodioCv, "numero_sequencial = ? AND temporada_id = ?",
+        arrayOf(episodio.numeroSequencial.toString(), episodio.temporadaId.toString()))
     }
 
     override fun removerEpisodio(temporadaId: Int, numeroSequencial: Int): Int {

@@ -13,10 +13,6 @@ class SerieSQLite(contexto: Context): SerieDAO {
         return bdSeries.insert("serie", null, serieCv)
     }
 
-    override fun recuperarSerie(nome: String): Serie {
-        TODO("Not yet implemented")
-    }
-
     override fun recuperarSeries(): MutableList<Serie> {
         val series: MutableList<Serie> = ArrayList()
         val serieCursor = bdSeries.rawQuery("SELECT * FROM serie", null)
@@ -34,10 +30,6 @@ class SerieSQLite(contexto: Context): SerieDAO {
             }
         }
         return series
-    }
-
-    override fun atualizarSeries(serie: Serie): Int {
-        TODO("Not yet implemented")
     }
 
     override fun removerSerie(nome: String): Int {

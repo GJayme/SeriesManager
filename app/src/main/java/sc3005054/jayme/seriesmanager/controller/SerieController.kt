@@ -10,9 +10,7 @@ class SerieController(mainSerieActivity: MainSerieActivity) {
     private val serieDAO: SerieDAO = SerieSQLite(mainSerieActivity)
 
     fun inserirSerie(serie: Serie) = serieDAO.criarSerie(serie)
-    fun buscarSeries(nome: String) = serieDAO.recuperarSerie(nome)
     fun buscarSeries() = serieDAO.recuperarSeries()
-    fun modificarSerie(serie: Serie) = serieDAO.atualizarSeries(serie)
     fun apagarSerie(nome: String) = serieDAO.removerSerie(nome)
 
 }

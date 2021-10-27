@@ -11,7 +11,6 @@ class TemporadaController(mainTemporadaActivity: MainTemporadaActivity) {
 
     fun inserirTemporada(temporada: Temporada) = temporadaDAO.criarTemporada(temporada)
     fun buscarTemporadas(nomeSerie: String) = temporadaDAO.recuperarTemporadas(nomeSerie)
-    fun modificarTemporadas(temporada: Temporada) = temporadaDAO.atualizarTemporada(temporada)
     fun apagarTemporadas(nomeSerie: String, numeroSequencial: Int) = temporadaDAO.removerTemporada(nomeSerie, numeroSequencial)
     fun buscarTemporadaId(nomeSerie: String, numeroSequencial: Int) = temporadaDAO.buscarTemporadaId(nomeSerie, numeroSequencial)
 

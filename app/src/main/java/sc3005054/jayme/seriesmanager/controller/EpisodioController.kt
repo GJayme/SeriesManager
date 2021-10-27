@@ -2,7 +2,6 @@ package sc3005054.jayme.seriesmanager.controller
 
 import sc3005054.jayme.seriesmanager.MainEpisodioActivity
 import sc3005054.jayme.seriesmanager.domain.Episodio
-import sc3005054.jayme.seriesmanager.domain.Temporada
 import sc3005054.jayme.seriesmanager.repository.EpisodioDAO
 import sc3005054.jayme.seriesmanager.repository.EpisodioSQLite
 

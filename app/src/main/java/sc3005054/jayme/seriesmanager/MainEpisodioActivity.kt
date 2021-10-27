@@ -9,14 +9,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
 import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
 import sc3005054.jayme.seriesmanager.adapter.EpisodioRvAdapter
 import sc3005054.jayme.seriesmanager.controller.EpisodioController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainEpisodioBinding
 import sc3005054.jayme.seriesmanager.domain.Episodio
-import sc3005054.jayme.seriesmanager.domain.Temporada
-import kotlin.properties.Delegates
 
 class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
     companion object Extras {
@@ -24,14 +21,15 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         const val EXTRA_EPISODIO_POSICAO = "EXTRA_EPISODIO_POSICAO"
     }
 
-    private var temporadaId by Delegates.notNull<Int>()
+    private var temporadaId: Int = 0
 
     private val activityMainEpisodioBinding: ActivityMainEpisodioBinding by lazy {
         ActivityMainEpisodioBinding.inflate(layoutInflater)
     }
 
     private lateinit var episodioActivityResultLauncher: ActivityResultLauncher<Intent>
-    private lateinit var visualizarEpisodioActivityResultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var editarEpisodioActivityResultLauncher: ActivityResultLauncher<Intent>
+
 
     // Controller
     private val episodioController: EpisodioController by lazy {
@@ -70,10 +68,15 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
             }
         }
 
-        visualizarEpisodioActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultado ->
+        editarEpisodioActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultado ->
             if (resultado.resultCode == RESULT_OK) {
                 val posicao = resultado.data?.getIntExtra(EXTRA_EPISODIO_POSICAO, -1)
                 resultado.data?.getParcelableExtra<Episodio>(EXTRA_EPISODIO)?.apply {
+                    if (posicao != null && posicao != -1) {
+                        episodioController.modificarEpisodio(this)
+                        episodioList[posicao] = this
+                        episodioAdapter.notifyDataSetChanged()
+                    }
                 }
             }
         }
@@ -90,6 +93,13 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         val episodio = episodioList[posicao]
 
         return when(item.itemId) {
+            R.id.EditarEpisodioMi -> {
+                val editarEpisodioIntent = Intent(this, EpisodioActivity::class.java)
+                editarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
+                editarEpisodioIntent.putExtra(EXTRA_EPISODIO_POSICAO, posicao)
+                editarEpisodioActivityResultLauncher.launch(editarEpisodioIntent)
+                true
+            }
             R.id.removerEpisodioMi -> {
                 with(AlertDialog.Builder(this)) {
                     setMessage("Confirmar remoção?")
@@ -104,16 +114,17 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
                     }
                     create()
                 }.show()
-
                 true
             } else -> { false }
         }
     }
 
     override fun onEpisodioClick(posicao: Int) {
+        temporadaId = intent.getIntExtra(EXTRA_TEMPORADA_ID, -1)
         val episodio = episodioList[posicao]
         val consultarEpisodioIntent = Intent(this, EpisodioActivity::class.java)
         consultarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
+        consultarEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
         startActivity(consultarEpisodioIntent)
     }
 }
