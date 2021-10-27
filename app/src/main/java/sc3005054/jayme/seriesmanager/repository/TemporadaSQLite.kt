@@ -33,6 +33,11 @@ class TemporadaSQLite(contexto: Context): TemporadaDAO {
 
     override fun removerTemporada(nomeSerie: String, numeroSequencial: Int): Int {
         val numeroSequencialString: String = numeroSequencial.toString()
+        val temporadaId = buscarTemporadaId(nomeSerie, numeroSequencial)
+
+        //Deletar todos os episodios antes de deletar a temporada
+        bdSeries.delete("episodio", "temporada_id = ? ", arrayOf(temporadaId.toString()))
+
         return bdSeries.delete("temporada", "numero_sequencial = ? AND nome_serie = ?",
             arrayOf(numeroSequencialString, nomeSerie)
         )
