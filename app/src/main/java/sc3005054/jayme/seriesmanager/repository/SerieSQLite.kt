@@ -33,6 +33,7 @@ class SerieSQLite(contexto: Context): SerieDAO {
     }
 
     override fun removerSerie(nome: String): Int {
+        bdSeries.execSQL("PRAGMA foreign_keys = ON")
         return bdSeries.delete("serie", "nome = ?", arrayOf(nome))
     }
 
