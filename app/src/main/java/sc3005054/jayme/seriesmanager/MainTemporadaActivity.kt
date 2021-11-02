@@ -25,30 +25,13 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
 
     private lateinit var serie: Serie
 
-    private val activityMainTemporadaBinding: ActivityMainTemporadaBinding by lazy {
-        ActivityMainTemporadaBinding.inflate(layoutInflater)
-    }
-
+    private val activityMainTemporadaBinding: ActivityMainTemporadaBinding by lazy { ActivityMainTemporadaBinding.inflate(layoutInflater) }
     private lateinit var temporadaActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var visualizarTemporadaActivityResultLauncher: ActivityResultLauncher<Intent>
-
-    // Controller
-    private val temporadaController: TemporadaController by lazy {
-        TemporadaController(this)
-    }
-
-    //Data source
-    private val temporadaList: MutableList<Temporada> by lazy {
-        temporadaController.buscarTemporadas(serie.nome)
-    }
-
-    private val temporadaAdapter: TemporadaRvAdapter by lazy {
-        TemporadaRvAdapter(this, temporadaList)
-    }
-
-    private val temporadaLayoutManager: LinearLayoutManager by lazy {
-        LinearLayoutManager(this)
-    }
+    private val temporadaController: TemporadaController by lazy { TemporadaController(this) }
+    private val temporadaList: MutableList<Temporada> by lazy { temporadaController.buscarTemporadas(serie.nome) }
+    private val temporadaAdapter: TemporadaRvAdapter by lazy { TemporadaRvAdapter(this, temporadaList) }
+    private val temporadaLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

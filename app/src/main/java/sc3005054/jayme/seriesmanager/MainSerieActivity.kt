@@ -20,30 +20,13 @@ class MainSerieActivity : AppCompatActivity(), OnSerieClickListener {
         const val EXTRA_SERIE_POSICAO = "EXTRA_SERIE_POSICAO"
     }
 
-    private val activityMainSerieBinding: ActivityMainSerieBinding by lazy {
-        ActivityMainSerieBinding.inflate(layoutInflater)
-    }
-
+    private val activityMainSerieBinding: ActivityMainSerieBinding by lazy { ActivityMainSerieBinding.inflate(layoutInflater) }
     private lateinit var serieActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var visualizarSerieActivityResultLauncher: ActivityResultLauncher<Intent>
-
-    // Controller
-    private val serieController: SerieController by lazy {
-        SerieController(this)
-    }
-
-    //Data source
-    private val serieList: MutableList<Serie> by lazy {
-        serieController.buscarSeries()
-    }
-
-    private val serieAdapter: SerieRvAdapter by lazy {
-        SerieRvAdapter(this, serieList)
-    }
-
-    private val serieLayoutManager: LinearLayoutManager by lazy {
-        LinearLayoutManager(this)
-    }
+    private val serieController: SerieController by lazy { SerieController(this) }
+    private val serieList: MutableList<Serie> by lazy { serieController.buscarSeries() }
+    private val serieAdapter: SerieRvAdapter by lazy { SerieRvAdapter(this, serieList) }
+    private val serieLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

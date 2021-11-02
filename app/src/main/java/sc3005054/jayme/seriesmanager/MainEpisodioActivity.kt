@@ -23,31 +23,13 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
 
     private var temporadaId: Int = 0
 
-    private val activityMainEpisodioBinding: ActivityMainEpisodioBinding by lazy {
-        ActivityMainEpisodioBinding.inflate(layoutInflater)
-    }
-
+    private val activityMainEpisodioBinding: ActivityMainEpisodioBinding by lazy { ActivityMainEpisodioBinding.inflate(layoutInflater) }
     private lateinit var episodioActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var editarEpisodioActivityResultLauncher: ActivityResultLauncher<Intent>
-
-
-    // Controller
-    private val episodioController: EpisodioController by lazy {
-        EpisodioController(this)
-    }
-
-    //Data source
-    private val episodioList: MutableList<Episodio> by lazy {
-        episodioController.buscarEpisodios(temporadaId)
-    }
-
-    private val episodioAdapter: EpisodioRvAdapter by lazy {
-        EpisodioRvAdapter(this, episodioList)
-    }
-
-    private val episodioLayoutManager: LinearLayoutManager by lazy {
-        LinearLayoutManager(this)
-    }
+    private val episodioController: EpisodioController by lazy { EpisodioController(this) }
+    private val episodioList: MutableList<Episodio> by lazy { episodioController.buscarEpisodios(temporadaId) }
+    private val episodioAdapter: EpisodioRvAdapter by lazy { EpisodioRvAdapter(this, episodioList) }
+    private val episodioLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
