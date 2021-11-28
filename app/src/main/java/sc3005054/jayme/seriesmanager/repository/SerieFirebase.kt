@@ -11,15 +11,15 @@ import sc3005054.jayme.seriesmanager.domain.Serie
 
 class SerieFirebase: SerieDAO {
     companion object {
-        private val BD_SERIES_MANAGER = "series-managager"
+        private val BD_SERIES_MANAGER = "series"
     }
     // Referência para o RtDb -> series-manager
-    private val  seriesManagerRtDb = Firebase.database.getReference(BD_SERIES_MANAGER)
+    private val  serieRtDb = Firebase.database.getReference(BD_SERIES_MANAGER)
 
     // Lista de series que simula uma consulta
     private val seriesList: MutableList<Serie> = mutableListOf()
     init {
-        seriesManagerRtDb.addChildEventListener(object: ChildEventListener {
+        serieRtDb.addChildEventListener(object: ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val novaSerie: Serie? = snapshot.value as? Serie
                 novaSerie?.apply {
@@ -51,7 +51,7 @@ class SerieFirebase: SerieDAO {
                 // Não se aplica
             }
         })
-        seriesManagerRtDb.addListenerForSingleValueEvent(object: ValueEventListener {
+        serieRtDb.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 seriesList.clear()
                 snapshot.children.forEach {
@@ -73,11 +73,11 @@ class SerieFirebase: SerieDAO {
     override fun recuperarSeries(): MutableList<Serie> = seriesList
 
     override fun removerSerie(nome: String): Int {
-        seriesManagerRtDb.child(nome).removeValue()
+        serieRtDb.child(nome).removeValue()
         return 1
     }
 
     private fun criarOuAtualizarSerie(serie: Serie) {
-        seriesManagerRtDb.child(serie.nome).setValue(serie)
+        serieRtDb.child(serie.nome).setValue(serie)
     }
 }
