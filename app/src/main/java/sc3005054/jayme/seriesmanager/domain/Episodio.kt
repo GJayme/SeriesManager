@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Episodio(
-    val numeroSequencial: Int,
-    val nome: String,
-    val duracao: Int,
-    val foiVisto: Boolean,
-    val temporadaId: Int
+    val numeroSequencial: Int = -1,
+    val nome: String = "",
+    val duracao: Int = -99,
+    val foiVisto: Boolean = false,
+    val temporadaId: Int = -1
 ): Parcelable
