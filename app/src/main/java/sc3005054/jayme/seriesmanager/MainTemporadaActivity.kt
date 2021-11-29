@@ -37,6 +37,7 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activityMainTemporadaBinding.root)
+        supportActionBar?.subtitle = "Temporadas"
 
         serie = intent.getParcelableExtra<Serie>(EXTRA_SERIE)!!
 

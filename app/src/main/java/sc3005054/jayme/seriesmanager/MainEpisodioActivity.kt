@@ -40,6 +40,7 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activityMainEpisodioBinding.root)
+        supportActionBar?.subtitle = "Episódios"
 
         temporada = intent.getParcelableExtra<Temporada>(EXTRA_TEMPORADA)!!
         serie = intent.getParcelableExtra<Serie>(EXTRA_SERIE)!!
