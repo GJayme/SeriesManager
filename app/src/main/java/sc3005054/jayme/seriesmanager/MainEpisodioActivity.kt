@@ -2,6 +2,7 @@ package sc3005054.jayme.seriesmanager
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -9,11 +10,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import sc3005054.jayme.seriesmanager.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
 import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
 import sc3005054.jayme.seriesmanager.adapter.EpisodioRvAdapter
 import sc3005054.jayme.seriesmanager.controller.EpisodioController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainEpisodioBinding
 import sc3005054.jayme.seriesmanager.domain.Episodio
+import sc3005054.jayme.seriesmanager.domain.Serie
+import sc3005054.jayme.seriesmanager.domain.Temporada
 
 class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
     companion object Extras {
@@ -21,13 +26,14 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         const val EXTRA_EPISODIO_POSICAO = "EXTRA_EPISODIO_POSICAO"
     }
 
-    private var temporadaId: Int = 0
+    private lateinit var temporada: Temporada
+    private lateinit var serie: Serie
 
     private val activityMainEpisodioBinding: ActivityMainEpisodioBinding by lazy { ActivityMainEpisodioBinding.inflate(layoutInflater) }
     private lateinit var episodioActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var editarEpisodioActivityResultLauncher: ActivityResultLauncher<Intent>
-    private val episodioController: EpisodioController by lazy { EpisodioController(this) }
-    private val episodioList: MutableList<Episodio> by lazy { episodioController.buscarEpisodios(temporadaId) }
+    private val episodioController: EpisodioController by lazy { EpisodioController(temporada) }
+    private val episodioList: MutableList<Episodio> by lazy { episodioController.buscarEpisodios() }
     private val episodioAdapter: EpisodioRvAdapter by lazy { EpisodioRvAdapter(this, episodioList) }
     private val episodioLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(this) }
 
@@ -35,7 +41,8 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         super.onCreate(savedInstanceState)
         setContentView(activityMainEpisodioBinding.root)
 
-        temporadaId = intent.getIntExtra(EXTRA_TEMPORADA_ID, -1)
+        temporada = intent.getParcelableExtra<Temporada>(EXTRA_TEMPORADA)!!
+        serie = intent.getParcelableExtra<Serie>(EXTRA_SERIE)!!
 
         activityMainEpisodioBinding.EpisodiosRv.adapter = episodioAdapter
         activityMainEpisodioBinding.EpisodiosRv.layoutManager = episodioLayoutManager
@@ -65,7 +72,7 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
 
         activityMainEpisodioBinding.adicionarEpisodioFb.setOnClickListener {
             val addEpisodioIntent = Intent(this, EpisodioActivity::class.java)
-            addEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
+            addEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporada.numeroSequencial)
             episodioActivityResultLauncher.launch(addEpisodioIntent)
         }
     }
@@ -86,7 +93,7 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
                 with(AlertDialog.Builder(this)) {
                     setMessage("Confirmar remoção?")
                     setPositiveButton("Sim") { _, _ ->
-                        episodioController.apagarEpisodio(temporadaId, episodio.numeroSequencial)
+                        episodioController.apagarEpisodio(episodio.nome, episodio.numeroSequencial)
                         episodioList.removeAt(posicao)
                         episodioAdapter.notifyDataSetChanged()
                         Snackbar.make(activityMainEpisodioBinding.root, "Episódio removida", Snackbar.LENGTH_SHORT).show()
@@ -101,12 +108,25 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.atualizarMi -> {
+            episodioAdapter.notifyDataSetChanged()
+            true
+        }
+        else -> { false }
+    }
+
     override fun onEpisodioClick(posicao: Int) {
-        temporadaId = intent.getIntExtra(EXTRA_TEMPORADA_ID, -1)
-        val episodio = episodioList[posicao]
-        val consultarEpisodioIntent = Intent(this, EpisodioActivity::class.java)
-        consultarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
-        consultarEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
-        startActivity(consultarEpisodioIntent)
+//        temporadaId = intent.getIntExtra(EXTRA_TEMPORADA_ID, -1)
+//        val episodio = episodioList[posicao]
+//        val consultarEpisodioIntent = Intent(this, EpisodioActivity::class.java)
+//        consultarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
+//        consultarEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
+//        startActivity(consultarEpisodioIntent)
     }
 }

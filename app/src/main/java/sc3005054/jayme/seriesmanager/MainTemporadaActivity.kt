@@ -2,6 +2,7 @@ package sc3005054.jayme.seriesmanager
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -28,7 +29,7 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
     private val activityMainTemporadaBinding: ActivityMainTemporadaBinding by lazy { ActivityMainTemporadaBinding.inflate(layoutInflater) }
     private lateinit var temporadaActivityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var visualizarTemporadaActivityResultLauncher: ActivityResultLauncher<Intent>
-    private val temporadaController: TemporadaController by lazy { TemporadaController(this) }
+    private val temporadaController: TemporadaController by lazy { TemporadaController(serie) }
     private val temporadaList: MutableList<Temporada> by lazy { temporadaController.buscarTemporadas(serie.nome) }
     private val temporadaAdapter: TemporadaRvAdapter by lazy { TemporadaRvAdapter(this, temporadaList) }
     private val temporadaLayoutManager: LinearLayoutManager by lazy { LinearLayoutManager(this) }
@@ -100,12 +101,26 @@ class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.atualizarMi -> {
+            temporadaAdapter.notifyDataSetChanged()
+            true
+        }
+        else -> { false }
+    }
+
     override fun onTemporadaClick(posicao: Int) {
         val temporada = temporadaList[posicao]
-        val temporadaId = temporadaController.buscarTemporadaId(temporada.nomeSerie, temporada.numeroSequencial)
+//        val temporadaId = temporadaController.buscarTemporadaId(temporada.nomeSerie, temporada.numeroSequencial)
         val consultarEpisodiosIntent = Intent(this, MainEpisodioActivity::class.java)
         consultarEpisodiosIntent.putExtra(EXTRA_TEMPORADA, temporada)
-        consultarEpisodiosIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
+        consultarEpisodiosIntent.putExtra(EXTRA_SERIE, serie)
+//        consultarEpisodiosIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
         startActivity(consultarEpisodiosIntent)
     }
 }

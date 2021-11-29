@@ -10,12 +10,9 @@ import com.google.firebase.ktx.Firebase
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
 
-class TemporadaFirebase: TemporadaDAO {
-    companion object {
-        private val BD_SERIES_MANAGER = "temporadas"
-    }
+class TemporadaFirebase(serie: Serie): TemporadaDAO {
     // Referência para o RtDb -> series-manager
-    private val  temporadaRtDb = Firebase.database.getReference(BD_SERIES_MANAGER)
+    private val  temporadaRtDb = Firebase.database.getReference("Temporadas de : " + serie.nome)
 
     // Lista de temporadas que simula uma consulta
     private val temporadaList: MutableList<Temporada> = mutableListOf()
@@ -75,7 +72,7 @@ class TemporadaFirebase: TemporadaDAO {
     override fun recuperarTemporadas(nomeSerie: String): MutableList<Temporada> = temporadaList
 
     override fun removerTemporada(nomeSerie: String, numeroSequencial: Int): Int {
-        temporadaRtDb.child(nomeSerie).removeValue()
+        temporadaRtDb.child(nomeSerie + numeroSequencial).removeValue()
         return 1
     }
 

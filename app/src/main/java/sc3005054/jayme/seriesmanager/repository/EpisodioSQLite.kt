@@ -33,6 +33,11 @@ class EpisodioSQLite(contexto: Context): EpisodioDAO {
         return episodios
     }
 
+    override fun recuperarEpisodios(): MutableList<Episodio> {
+        //Não se aplica
+        return mutableListOf()
+    }
+
     override fun recuperarEpisodio(numeroSequencial: Int, temporadaId: Int): Episodio? {
         var episodio: Episodio? = null
         val episodioCursor = bdSeries.rawQuery("SELECT * FROM episodio WHERE numero_sequencial = ? AND temporada_id = ?",
@@ -59,6 +64,11 @@ class EpisodioSQLite(contexto: Context): EpisodioDAO {
     override fun removerEpisodio(temporadaId: Int, numeroSequencial: Int): Int {
         return bdSeries.delete("episodio", "temporada_id = ? AND numero_sequencial = ?",
             arrayOf(temporadaId.toString(), numeroSequencial.toString()))
+    }
+
+    override fun removerEpisodio(nomeEpisodio: String, numeroSequencial: Int): Int {
+        //Não se aplica
+        return 1
     }
 
     private fun converterEpisodioParaContetValues(episodio: Episodio): ContentValues {
