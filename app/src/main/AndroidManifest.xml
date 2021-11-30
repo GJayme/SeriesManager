@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeriesManager">
         <activity
-            android:name=".CadastrarUsuarioActivity"
+            android:name=".view.CadastrarUsuarioActivity"
             android:exported="false" />
         <activity
-            android:name=".RecuperarSenhaActivity"
+            android:name=".view.RecuperarSenhaActivity"
             android:exported="false" />
         <activity
-            android:name=".AutenticacaoActivity"
+            android:name=".view.AutenticacaoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,22 +25,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EpisodioActivity"
+            android:name=".view.details.EpisodioActivity"
             android:exported="true" />
         <activity
-            android:name=".MainEpisodioActivity"
+            android:name=".view.MainEpisodioActivity"
             android:exported="true" />
         <activity
-            android:name=".TemporadaActivity"
+            android:name=".view.details.TemporadaActivity"
             android:exported="true" />
         <activity
-            android:name=".MainTemporadaActivity"
+            android:name=".view.MainTemporadaActivity"
             android:exported="true" />
         <activity
-            android:name=".SerieActivity"
+            android:name=".view.details.SerieActivity"
             android:exported="true" />
         <activity
-            android:name=".MainSerieActivity"
+            android:name=".view.MainSerieActivity"
             android:exported="true"/>
     </application>
 

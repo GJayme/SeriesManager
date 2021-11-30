@@ -1,11 +1,12 @@
-package sc3005054.jayme.seriesmanager
+package sc3005054.jayme.seriesmanager.view.details
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import sc3005054.jayme.seriesmanager.MainSerieActivity.Extras.EXTRA_SERIE
-import sc3005054.jayme.seriesmanager.MainSerieActivity.Extras.EXTRA_SERIE_POSICAO
+import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE_POSICAO
 import sc3005054.jayme.seriesmanager.controller.GeneroController
 import sc3005054.jayme.seriesmanager.databinding.ActivitySerieBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
@@ -60,6 +61,13 @@ class SerieActivity: AppCompatActivity() {
                 resultadoIntent.putExtra(EXTRA_SERIE_POSICAO, posicao)
             }
             setResult(RESULT_OK, resultadoIntent)
+            finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (AuthenticacaoFirebase.firebaseAuth.currentUser == null) {
             finish()
         }
     }

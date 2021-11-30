@@ -1,4 +1,4 @@
-package sc3005054.jayme.seriesmanager
+package sc3005054.jayme.seriesmanager.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +10,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import sc3005054.jayme.seriesmanager.*
 import sc3005054.jayme.seriesmanager.adapter.SerieRvAdapter
 import sc3005054.jayme.seriesmanager.controller.SerieController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainSerieBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
+import sc3005054.jayme.seriesmanager.view.details.SerieActivity
+import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
+import sc3005054.jayme.seriesmanager.view.utils.OnSerieClickListener
 
 class MainSerieActivity : AppCompatActivity(), OnSerieClickListener {
     companion object Extras {
@@ -102,6 +106,11 @@ class MainSerieActivity : AppCompatActivity(), OnSerieClickListener {
             serieAdapter.notifyDataSetChanged()
             true
         }
+        R.id.sairMi -> {
+            AuthenticacaoFirebase.firebaseAuth.signOut()
+            finish()
+            true
+        }
         else -> { false }
     }
 
@@ -110,5 +119,12 @@ class MainSerieActivity : AppCompatActivity(), OnSerieClickListener {
         val consultarTemporadasIntent = Intent(this, MainTemporadaActivity::class.java)
         consultarTemporadasIntent.putExtra(EXTRA_SERIE, serie)
         startActivity(consultarTemporadasIntent)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (AuthenticacaoFirebase.firebaseAuth.currentUser == null) {
+            finish()
+        }
     }
 }

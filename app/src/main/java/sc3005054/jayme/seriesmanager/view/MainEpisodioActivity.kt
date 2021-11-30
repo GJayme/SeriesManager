@@ -1,4 +1,4 @@
-package sc3005054.jayme.seriesmanager
+package sc3005054.jayme.seriesmanager.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,15 +10,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import sc3005054.jayme.seriesmanager.MainSerieActivity.Extras.EXTRA_SERIE
-import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
-import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
+import sc3005054.jayme.seriesmanager.view.utils.OnEpisodioClickListener
+import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.adapter.EpisodioRvAdapter
 import sc3005054.jayme.seriesmanager.controller.EpisodioController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainEpisodioBinding
 import sc3005054.jayme.seriesmanager.domain.Episodio
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
+import sc3005054.jayme.seriesmanager.view.details.EpisodioActivity
+import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
 
 class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
     companion object Extras {
@@ -119,6 +123,11 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
             episodioAdapter.notifyDataSetChanged()
             true
         }
+        R.id.sairMi -> {
+            AuthenticacaoFirebase.firebaseAuth.signOut()
+            finish()
+            true
+        }
         else -> { false }
     }
 
@@ -129,5 +138,12 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
 //        consultarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
 //        consultarEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
 //        startActivity(consultarEpisodioIntent)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (AuthenticacaoFirebase.firebaseAuth.currentUser == null) {
+            finish()
+        }
     }
 }

@@ -1,14 +1,15 @@
-package sc3005054.jayme.seriesmanager
+package sc3005054.jayme.seriesmanager.view.details
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import sc3005054.jayme.seriesmanager.MainSerieActivity.Extras.EXTRA_SERIE
-import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
-import sc3005054.jayme.seriesmanager.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_POSICAO
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_POSICAO
 import sc3005054.jayme.seriesmanager.databinding.ActivityTemporadaBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
+import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
 
 class TemporadaActivity: AppCompatActivity() {
 
@@ -48,6 +49,13 @@ class TemporadaActivity: AppCompatActivity() {
                 resultadoIntent.putExtra(EXTRA_TEMPORADA, posicao)
             }
             setResult(RESULT_OK, resultadoIntent)
+            finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (AuthenticacaoFirebase.firebaseAuth.currentUser == null) {
             finish()
         }
     }

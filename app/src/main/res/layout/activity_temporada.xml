@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="5dp"
-    tools:context=".TemporadaActivity">
+    tools:context=".view.details.TemporadaActivity">
 
     <TextView
         android:id="@+id/numeroSequencialEpisodioTv"

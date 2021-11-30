@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="5dp"
-    tools:context=".EpisodioActivity">
+    tools:context=".view.details.EpisodioActivity">
 
     <TextView
         android:id="@+id/nomeTv"

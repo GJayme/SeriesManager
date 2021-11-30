@@ -1,11 +1,9 @@
 package sc3005054.jayme.seriesmanager.controller
 
-import sc3005054.jayme.seriesmanager.MainTemporadaActivity
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
 import sc3005054.jayme.seriesmanager.repository.TemporadaDAO
 import sc3005054.jayme.seriesmanager.repository.TemporadaFirebase
-import sc3005054.jayme.seriesmanager.repository.TemporadaSQLite
 
 class TemporadaController(serie: Serie) {
 
