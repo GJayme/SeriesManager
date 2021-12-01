@@ -10,16 +10,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import sc3005054.jayme.seriesmanager.view.utils.OnTemporadaClickListener
 import sc3005054.jayme.seriesmanager.R
-import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
 import sc3005054.jayme.seriesmanager.adapter.TemporadaRvAdapter
 import sc3005054.jayme.seriesmanager.controller.TemporadaController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainTemporadaBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
 import sc3005054.jayme.seriesmanager.view.details.TemporadaActivity
 import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
+import sc3005054.jayme.seriesmanager.view.utils.OnTemporadaClickListener
 
 class MainTemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
     companion object Extras {

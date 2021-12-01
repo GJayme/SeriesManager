@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
-import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
-import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE_POSICAO
 import sc3005054.jayme.seriesmanager.controller.GeneroController
 import sc3005054.jayme.seriesmanager.databinding.ActivitySerieBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE_POSICAO
+import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
 
 class SerieActivity: AppCompatActivity() {
 

@@ -4,10 +4,10 @@ import android.view.*
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import sc3005054.jayme.seriesmanager.view.utils.OnEpisodioClickListener
 import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.databinding.LayoutEpisodioBinding
 import sc3005054.jayme.seriesmanager.domain.Episodio
+import sc3005054.jayme.seriesmanager.view.utils.OnEpisodioClickListener
 
 class EpisodioRvAdapter (
     private val onEpisodioClickListener: OnEpisodioClickListener,

@@ -3,12 +3,12 @@ package sc3005054.jayme.seriesmanager.view.details
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
-import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
-import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_POSICAO
 import sc3005054.jayme.seriesmanager.databinding.ActivityTemporadaBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_POSICAO
 import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
 
 class TemporadaActivity: AppCompatActivity() {

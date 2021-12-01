@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import sc3005054.jayme.seriesmanager.*
+import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.adapter.SerieRvAdapter
 import sc3005054.jayme.seriesmanager.controller.SerieController
 import sc3005054.jayme.seriesmanager.databinding.ActivityMainSerieBinding

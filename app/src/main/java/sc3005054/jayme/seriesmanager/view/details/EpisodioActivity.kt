@@ -3,11 +3,11 @@ package sc3005054.jayme.seriesmanager.view.details
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import sc3005054.jayme.seriesmanager.databinding.ActivityEpisodioBinding
+import sc3005054.jayme.seriesmanager.domain.Episodio
 import sc3005054.jayme.seriesmanager.view.MainEpisodioActivity.Extras.EXTRA_EPISODIO
 import sc3005054.jayme.seriesmanager.view.MainEpisodioActivity.Extras.EXTRA_EPISODIO_POSICAO
 import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
-import sc3005054.jayme.seriesmanager.databinding.ActivityEpisodioBinding
-import sc3005054.jayme.seriesmanager.domain.Episodio
 import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
 
 class EpisodioActivity: AppCompatActivity() {

@@ -1,10 +1,10 @@
 package sc3005054.jayme.seriesmanager.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
+import androidx.appcompat.app.AppCompatActivity
 import sc3005054.jayme.seriesmanager.databinding.ActivityCadastrarUsuarioBinding
+import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
 
 class CadastrarUsuarioActivity : AppCompatActivity() {
     private val cadastrarUsuarioBinding: ActivityCadastrarUsuarioBinding by lazy {

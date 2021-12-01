@@ -10,10 +10,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
-import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
-import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
-import sc3005054.jayme.seriesmanager.view.utils.OnEpisodioClickListener
 import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.adapter.EpisodioRvAdapter
 import sc3005054.jayme.seriesmanager.controller.EpisodioController
@@ -21,8 +17,12 @@ import sc3005054.jayme.seriesmanager.databinding.ActivityMainEpisodioBinding
 import sc3005054.jayme.seriesmanager.domain.Episodio
 import sc3005054.jayme.seriesmanager.domain.Serie
 import sc3005054.jayme.seriesmanager.domain.Temporada
+import sc3005054.jayme.seriesmanager.view.MainSerieActivity.Extras.EXTRA_SERIE
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA
+import sc3005054.jayme.seriesmanager.view.MainTemporadaActivity.Extras.EXTRA_TEMPORADA_ID
 import sc3005054.jayme.seriesmanager.view.details.EpisodioActivity
 import sc3005054.jayme.seriesmanager.view.utils.AuthenticacaoFirebase
+import sc3005054.jayme.seriesmanager.view.utils.OnEpisodioClickListener
 
 class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
     companion object Extras {
@@ -133,11 +133,11 @@ class MainEpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
 
     override fun onEpisodioClick(posicao: Int) {
 //        temporadaId = intent.getIntExtra(EXTRA_TEMPORADA_ID, -1)
-//        val episodio = episodioList[posicao]
-//        val consultarEpisodioIntent = Intent(this, EpisodioActivity::class.java)
-//        consultarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
+        val episodio = episodioList[posicao]
+        val consultarEpisodioIntent = Intent(this, EpisodioActivity::class.java)
+        consultarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
 //        consultarEpisodioIntent.putExtra(EXTRA_TEMPORADA_ID, temporadaId)
-//        startActivity(consultarEpisodioIntent)
+        startActivity(consultarEpisodioIntent)
     }
 
     override fun onStart() {

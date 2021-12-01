@@ -3,10 +3,10 @@ package sc3005054.jayme.seriesmanager.adapter
 import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import sc3005054.jayme.seriesmanager.view.utils.OnSerieClickListener
 import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.databinding.LayoutSerieBinding
 import sc3005054.jayme.seriesmanager.domain.Serie
+import sc3005054.jayme.seriesmanager.view.utils.OnSerieClickListener
 
 class SerieRvAdapter(
     private val onSerieClickListener: OnSerieClickListener,

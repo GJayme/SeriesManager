@@ -3,10 +3,10 @@ package sc3005054.jayme.seriesmanager.adapter
 import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import sc3005054.jayme.seriesmanager.view.utils.OnTemporadaClickListener
 import sc3005054.jayme.seriesmanager.R
 import sc3005054.jayme.seriesmanager.databinding.LayoutTemporadaBinding
 import sc3005054.jayme.seriesmanager.domain.Temporada
+import sc3005054.jayme.seriesmanager.view.utils.OnTemporadaClickListener
 
 class TemporadaRvAdapter(
     private val onTemporadaClickListener: OnTemporadaClickListener,
